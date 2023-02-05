@@ -38,15 +38,20 @@ function search_pokemon(query) {
         </p>
     </div>
     <div class="basis-6/12 w-6/12 relative font-poppins">
+        <!-- Manually binding input values so mobile autocomplete works properly -->
         <input
-            v-model="search_query"
-            @input="search_pokemon(search_query)"
+            :value="search_query"
+            @input="
+                search_query = $event.target.value;
+                search_pokemon(search_query);
+            "
             id="combobox"
             type="text"
             class="w-full h-8 rounded-md border border-gray-500 bg-white pl-5 py-2 px-1 focus:border-black focus:outline-none focus:ring-black text-sm capitalize font-bungee"
             role="combobox"
             aria-controls="options"
             aria-expanded="false"
+            autocomplete="false"
             :placeholder="
                 pokedexStore?.selected_pokemon
                     ? pokedexStore?.selected_pokemon?.pokemon_species?.name
