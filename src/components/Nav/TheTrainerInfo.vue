@@ -12,7 +12,7 @@
 
         <div class="flex flex-row flex-nowrap text-white gap-1 items-baseline">
             <img
-                src="/img/pokeball.png/"
+                src="/img/pokeball.png"
                 alt="pokeball"
                 class="w-4 h-4 self-end"
             />
