@@ -44,7 +44,7 @@ function open_lock_screen() {
 </script>
 
 <template>
-    <div>
+    <div v-if="loading && !unlocked">
         <div class="fixed inset-0 z-10" :class="unlocked ? 'hidden' : ''">
             <div
                 id="top-slide"
