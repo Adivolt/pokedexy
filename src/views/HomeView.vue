@@ -1,9 +1,12 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+import { usePokedexStore } from "@/stores/pokedex";
+
+const pokedexStore = usePokedexStore();
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+    <main>
+        <p>Home</p>
+        <p>{{ pokedexStore.selected_pokemon }}</p>
+    </main>
 </template>
