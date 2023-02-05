@@ -41,8 +41,11 @@ export const usePokedexStore = defineStore("pokedex", {
                     // Set the searchable Pokémon once the region pokemon are retrieved
                     this.searchable_pokemon = await fetched_pokemon_from_region;
                     // Set the default Pokémon to pikachu on load index is "25"
-                    this.selected_pokemon =
-                        fetched_pokemon_from_region[DEFAULT_POKEMON_PIKACHU];
+                    await this.set_pokemon(
+                        await fetched_pokemon_from_region[
+                            DEFAULT_POKEMON_PIKACHU
+                        ]
+                    );
                 });
         },
 

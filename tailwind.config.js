@@ -9,6 +9,9 @@ module.exports = {
                 poppins: ["Poppins", ...defaultTheme.fontFamily.sans],
             },
         },
+        backgroundImage: {
+            "blue-conical-gradient": "conic-gradient(var(--tw-gradient-stops))",
+        },
     },
     plugins: [],
 };
