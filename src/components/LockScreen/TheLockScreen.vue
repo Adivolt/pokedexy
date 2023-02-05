@@ -36,7 +36,7 @@ function open_lock_screen() {
             duration: 850,
             easing: "easeOutQuad",
             complete: () => {
-                this.unlocked = true;
+                this.unlocked.value = true;
             },
         });
     }
