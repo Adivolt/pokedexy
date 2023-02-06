@@ -20,7 +20,7 @@ onMounted(() => {
 });
 
 function open_lock_screen() {
-    if (!this.loading) {
+    if (!loading.value) {
         loading_overlay.value.remove();
 
         anime({
@@ -36,7 +36,7 @@ function open_lock_screen() {
             duration: 850,
             easing: "easeOutQuad",
             complete: () => {
-                this.unlocked.value = true;
+                unlocked.value = true;
             },
         });
     }
