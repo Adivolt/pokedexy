@@ -64,7 +64,7 @@ function search_pokemon(query) {
             <img
                 class="w-4 h-4"
                 :src="
-                    pokedexStore?.selected_pokemon?.entry_number
+                    pokedexStore?.selected_pokemon
                         ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokedexStore.selected_pokemon.species_id}.png`
                         : './img/pokeball-grayscale.png'
                 "
@@ -94,8 +94,8 @@ function search_pokemon(query) {
                 >
                     <img
                         :src="
-                            pokemon?.entry_number
-                                ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.entry_number}.png`
+                            pokemon?.species_id
+                                ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.species_id}.png`
                                 : './img/pokeball-grayscale.png'
                         "
                         class="h-4 w-4 flex-shrink-0"
