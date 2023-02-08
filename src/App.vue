@@ -39,7 +39,7 @@ import TheLockScreen from "@/components/LockScreen/TheLockScreen.vue";
                     </RouterLink>
                 </nav>
             </footer>
-            <TheLockScreen />
+            <!--            <TheLockScreen />-->
         </section>
         <section class="hidden sm:grid h-screen">
             <div
