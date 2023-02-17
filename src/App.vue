@@ -14,26 +14,26 @@ import TheLockScreen from "@/components/LockScreen/TheLockScreen.vue";
             >
                 <!-- TODO Refactor UI into components-->
                 <nav
-                    class="flex justify-between font-bungee text-xs text-blue-500"
+                    class="flex justify-between font-bungee text-xs text-red-500"
                 >
                     <RouterLink
-                        class="border border-blue-500 border-2 px-2 py-0.5 rounded"
+                        class="border border-red-500 border-2 px-2 py-0.5 rounded"
                         to="/"
                     >
                         Basic
                     </RouterLink>
                     <RouterLink
-                        class="border border-blue-500 border-2 px-2 py-0.5 rounded"
+                        class="border border-red-500 border-2 px-2 py-0.5 rounded"
                         to="/evolution"
                         >Evolution
                     </RouterLink>
                     <RouterLink
-                        class="border border-blue-500 border-2 px-2 py-0.5 rounded"
+                        class="border border-red-500 border-2 px-2 py-0.5 rounded"
                         to="/moves"
                         >Moves
                     </RouterLink>
                     <RouterLink
-                        class="border border-blue-500 border-2 px-2 py-0.5 rounded"
+                        class="border border-red-500 border-2 px-2 py-0.5 rounded"
                         to="/stats"
                         >Stats
                     </RouterLink>
