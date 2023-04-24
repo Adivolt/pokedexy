@@ -12,7 +12,7 @@ onMounted(() => {
 
     // generate a random number between 2 - 5
     let random_unlock_time = Math.floor(
-            (Math.random() * (MAX_TIME - MIN_TIME) + MIN_TIME) * 1000
+      (Math.random() * (MAX_TIME - MIN_TIME) + MIN_TIME) * 1000
     );
     setTimeout(() => {
         loading.value = false;
