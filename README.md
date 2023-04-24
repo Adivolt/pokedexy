@@ -1,6 +1,6 @@
-## Pokemon Pokedex Project ##
+## Pokedex Project ##
 
-A pokedex application frontend that uses the pokeapi backend.
+A Pokédex application frontend that uses the Poke-API backend.
 
 ```
 ⢀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⣠⣤⣶⣶
