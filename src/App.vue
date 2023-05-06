@@ -17,25 +17,28 @@ import TheLockScreen from "@/components/LockScreen/TheLockScreen.vue";
                     class="flex justify-between font-bungee text-xs text-red-500"
                 >
                     <RouterLink
-                        class="border border-red-500 border-2 px-2 py-0.5 rounded"
+                        class="border border-red-500 px-2 py-0.5 rounded"
                         to="/"
                     >
                         Basic
                     </RouterLink>
                     <RouterLink
-                        class="border border-red-500 border-2 px-2 py-0.5 rounded"
+                        class="border border-red-500 px-2 py-0.5 rounded"
                         to="/evolution"
-                        >Evolution
+                    >
+                        Evolution
                     </RouterLink>
                     <RouterLink
-                        class="border border-red-500 border-2 px-2 py-0.5 rounded"
+                        class="border border-red-500 px-2 py-0.5 rounded"
                         to="/moves"
-                        >Moves
+                    >
+                        Moves
                     </RouterLink>
                     <RouterLink
-                        class="border border-red-500 border-2 px-2 py-0.5 rounded"
+                        class="border border-red-500 px-2 py-0.5 rounded"
                         to="/stats"
-                        >Stats
+                    >
+                        Stats
                     </RouterLink>
                 </nav>
             </footer>
@@ -45,7 +48,9 @@ import TheLockScreen from "@/components/LockScreen/TheLockScreen.vue";
             <div
                 class="font-bungee font-gray sm:self-center text-center text-gray-400"
             >
-                <h1 class="text-3xl">Mobile Only Experience</h1>
+                <h1 class="text-3xl">
+                    Mobile Only Experience
+                </h1>
                 <p>Try accessing using your mobile phone</p>
             </div>
         </section>
