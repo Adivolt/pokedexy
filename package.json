@@ -13,7 +13,6 @@
     "dependencies": {
         "@headlessui/vue": "^1.7.9",
         "@heroicons/vue": "^2.0.14",
-        "animejs": "^3.2.1",
         "gsap": "^3.11.5",
         "pinia": "^2.0.30",
         "v-lazy-image": "^2.1.1",
