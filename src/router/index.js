@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
+import BasicView from "../views/BasicView.vue";
 import EvolutionView from "@/views/EvolutionView.vue";
 import MovesView from "@/views/MovesView.vue";
 import StatsView from "@/views/StatsView.vue";
@@ -10,24 +11,29 @@ const router = createRouter({
         {
             path: "/",
             name: "home",
-            component: HomeView,
+            component: HomeView
+        },
+        {
+            path: "/basic",
+            name: "basic",
+            component: BasicView
         },
         {
             path: "/evolution",
             name: "evolution",
-            component: EvolutionView,
+            component: EvolutionView
         },
         {
             path: "/moves",
             name: "moves",
-            component: MovesView,
+            component: MovesView
         },
         {
             path: "/stats",
-            name: "Stats",
-            component: StatsView,
-        },
-    ],
+            name: "stats",
+            component: StatsView
+        }
+    ]
 });
 
 export default router;

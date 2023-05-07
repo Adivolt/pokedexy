@@ -1,54 +1,24 @@
 <script setup>
 import { RouterView } from "vue-router";
-import TheNavbar from "@/components/Nav/TheNav.vue";
+import TheTopBar from "@/components/TopBar/TheTopBar.vue";
+import TheNavBar from "@/components/NavBar/TheNavBar.vue";
 import TheLockScreen from "@/components/LockScreen/TheLockScreen.vue";
 
 import { ref } from "vue";
 
 let locked = ref(true);
+let lock_enabled = ref(false);
 
 </script>
 
 <template>
     <main>
         <section class="sm:hidden">
-            <TheNavbar />
+            <TheTopBar />
             <RouterView class="bg-white min-h-[75vh]" />
-            <footer
-                class="bg-slate-800 fixed inset-x-0 bottom-0 py-3 px-1 border-t-2 border-blue-500"
-            >
-                <!-- TODO Refactor UI into components-->
-                <nav
-                    class="flex justify-between font-bungee text-xs text-red-500"
-                >
-                    <RouterLink
-                        class="border border-red-500 px-2 py-0.5 rounded"
-                        to="/"
-                    >
-                        Basic
-                    </RouterLink>
-                    <RouterLink
-                        class="border border-red-500 px-2 py-0.5 rounded"
-                        to="/evolution"
-                    >
-                        Evolution
-                    </RouterLink>
-                    <RouterLink
-                        class="border border-red-500 px-2 py-0.5 rounded"
-                        to="/moves"
-                    >
-                        Moves
-                    </RouterLink>
-                    <RouterLink
-                        class="border border-red-500 px-2 py-0.5 rounded"
-                        to="/stats"
-                    >
-                        Stats
-                    </RouterLink>
-                </nav>
-            </footer>
+            <TheNavBar />
             <TheLockScreen
-                v-if="locked"
+                v-if="lock_enabled && locked"
                 @unlocked="locked = false"
             />
         </section>

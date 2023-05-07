@@ -1,7 +1,7 @@
 <script setup>
-import TheRegionSelector from "@/components/Nav/TheRegionSelector.vue";
-import TheTrainerInfo from "@/components/Nav/TheTrainerInfo.vue";
-import ThePokemonSearchField from "@/components/Nav/ThePokemonSearchField.vue";
+import TheRegionSelector from "@/components/TopBar/TheRegionSelector.vue";
+import TheTrainerInfo from "@/components/TopBar/TheTrainerInfo.vue";
+import ThePokemonSearchField from "@/components/TopBar/ThePokemonSearchField.vue";
 </script>
 
 <template>
