@@ -2,6 +2,11 @@
 import { RouterView } from "vue-router";
 import TheNavbar from "@/components/Nav/TheNav.vue";
 import TheLockScreen from "@/components/LockScreen/TheLockScreen.vue";
+
+import { ref } from "vue";
+
+let locked = ref(true);
+
 </script>
 
 <template>
@@ -42,7 +47,10 @@ import TheLockScreen from "@/components/LockScreen/TheLockScreen.vue";
                     </RouterLink>
                 </nav>
             </footer>
-            <TheLockScreen />
+            <TheLockScreen
+                v-if="locked"
+                @unlocked="locked = false"
+            />
         </section>
         <section class="hidden sm:grid h-screen">
             <div

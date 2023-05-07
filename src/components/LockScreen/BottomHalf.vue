@@ -24,8 +24,7 @@ defineProps({
         />
         <!-- Lower Pokeball Inner -->
         <div
-            class="box-border col-start-2 row-start-1 border-8 border-t-0 border-black rounded-bl-full rounded-br-full z-10 w-[12vh] h-[6vh] justify-self-center self-start"
-            :class="loading ? 'bg-white' : 'bg-[#00ff00]'"
+            class="box-border col-start-2 row-start-1 border-8 border-t-0 border-black rounded-bl-full rounded-br-full z-10 w-[12vh] h-[6vh] justify-self-center self-start bg-white"
         />
         <!-- Right and left black bars of the pokeball -->
         <div

@@ -3,32 +3,23 @@ import { onMounted, ref } from "vue";
 import anime from "animejs";
 import TopHalf from "@/components/LockScreen/TopHalf.vue";
 import BottomHalf from "@/components/LockScreen/BottomHalf.vue";
-import LoadingOverlay from "@/components/LockScreen/LoadingOverlay.vue";
+import UnlockButton from "@/components/LockScreen/UnlockButton.vue";
+import { useRandomSecondsInRange } from "@/composables/randomSecondsInRange";
 
 const loading = ref(true);
-const unlocked = ref(false);
+// Generate a loading delay of 1 to 3 seconds using the composable
+const loading_delay = useRandomSecondsInRange(1, 3);
+
+const emit = defineEmits(["unlocked"]);
 
 onMounted(() => {
-
-    // minimum and maximum for random time range
-    const MINIMUM = 1;
-    const MAXIMUM = 3;
-
-    // Generate a random number of seconds between our defined time range
-    let time_to_unlock = Math.floor(
-        (Math.random() * (MAXIMUM - MINIMUM) + MINIMUM) * 1000
-    );
-    // Start a timer using the generated time length
-    setTimeout(() => {
-        // When done, set "loading" to false
-        loading.value = false;
-    }, time_to_unlock);
+    // When the delay expires set the loading to false
+    setTimeout(() => loading.value = false, loading_delay);
 });
 
-function unlock() {
+function animate_opening() {
 
     if (!loading.value) {
-
         anime({
             targets: "#top-slide",
             translateY: -500,
@@ -42,7 +33,7 @@ function unlock() {
             duration: 850,
             easing: "easeOutQuad",
             complete: () => {
-                unlocked.value = true;
+                emit("unlocked");
             }
         });
     }
@@ -50,16 +41,12 @@ function unlock() {
 </script>
 
 <template>
-    <div
-        v-if="!unlocked"
-        class="fixed inset-0 z-10"
-        :class="unlocked ? 'hidden' : ''"
-    >
+    <div class="fixed inset-0 z-10">
         <TopHalf :loading="loading" />
         <BottomHalf :loading="loading" />
-        <LoadingOverlay
+        <UnlockButton
             :loading="loading"
-            @unlock-button-clicked="unlock"
+            @button-clicked="animate_opening"
         />
     </div>
 </template>
