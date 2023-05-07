@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import { useRegionPokemonStore } from "@/stores/regionPokemon";
 
 // index 0 is national dex
 const KANTO_POKEDEX = 1;
@@ -22,8 +23,10 @@ export const usePokedexStore = defineStore("pokedex", {
             ;
         },
 
-        set_region(region) {
+        async set_region(region) {
             this.active_region = region;
+            // Fill the region Pokémon store with Pokémon from the region
+            await useRegionPokemonStore().fill(region);
         }
     }
 

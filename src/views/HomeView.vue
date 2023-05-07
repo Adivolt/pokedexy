@@ -1,18 +1,18 @@
 <script setup>
-import { usePokedexStore } from "@/stores/pokedex";
+import { useRegionPokemonStore } from "@/stores/regionPokemon.js";
 import VLazyImage from "v-lazy-image";
 import ThePokemonSearchField from "@/components/Search/ThePokemonSearchField.vue";
 import TheRegionSelector from "@/components/Search/TheRegionSelector.vue";
 import CircleSpinner from "@/components/icons/CircleSpinner.vue";
 
-const pokedexStore = usePokedexStore();
+const region_pokemon = useRegionPokemonStore();
 </script>
 
 <template>
     <section>
         <div class="bg-gray-700 flex p-1 w-full gap-1 sticky top-[5vh]">
             <TheRegionSelector />
-            <!--<ThePokemonSearchField />-->
+            <ThePokemonSearchField />
         </div>
 
         <!--<p class="font-bungee text-sm py-1 px-2 text-slate-500">-->

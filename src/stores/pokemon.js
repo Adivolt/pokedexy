@@ -5,7 +5,7 @@ const DEFAULT_DEX_NATIONAL = 0;
 // index 24 is pikachu
 const DEFAULT_POKEMON_PIKACHU = 24;
 
-export const usePokedexStore = defineStore("pokedex", {
+export const useRegionPokemonStore = defineStore("pokedex", {
     state: () => ({
         available_regions: "",
         selected_region: "",
@@ -13,14 +13,6 @@ export const usePokedexStore = defineStore("pokedex", {
         selected_pokemon: "",
         pokemon_data: ""
     }),
-
-    getters: {
-        formatted_regions: (state) =>
-            state.available_regions.map((region) => ({
-                name: region.name.replace("-", " "),
-                url: region.url
-            }))
-    },
 
     actions: {
         // Fetch a list of all available Pokédex regions
@@ -57,12 +49,6 @@ export const usePokedexStore = defineStore("pokedex", {
                 .then((entries) => {
                     return generate_species_id(entries);
                 });
-        },
-
-        // Set the Pokédex region
-        async set_region(region) {
-            this.selected_region = region;
-            this.searchable_pokemon = await this.fill_pokedex_pokemon(region);
         },
 
         // Set the Pokémon from region dex
