@@ -1,7 +1,6 @@
 <script setup>
 import { RouterView } from "vue-router";
 import TheTopBar from "@/components/TopBar/TheTopBar.vue";
-import TheNavBar from "@/components/NavBar/TheNavBar.vue";
 import TheLockScreen from "@/components/LockScreen/TheLockScreen.vue";
 
 import { ref } from "vue";
@@ -16,7 +15,6 @@ let lock_enabled = ref(false);
         <section class="sm:hidden">
             <TheTopBar />
             <RouterView class="bg-white min-h-[75vh]" />
-            <TheNavBar />
             <TheLockScreen
                 v-if="lock_enabled && locked"
                 @unlocked="locked = false"

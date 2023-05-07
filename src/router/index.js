@@ -14,22 +14,22 @@ const router = createRouter({
             component: HomeView
         },
         {
-            path: "/basic",
+            path: "/:id//basic",
             name: "basic",
             component: BasicView
         },
         {
-            path: "/evolution",
+            path: "/:id/evolution",
             name: "evolution",
             component: EvolutionView
         },
         {
-            path: "/moves",
+            path: "/:id/moves",
             name: "moves",
             component: MovesView
         },
         {
-            path: "/stats",
+            path: "/:id/stats",
             name: "stats",
             component: StatsView
         }

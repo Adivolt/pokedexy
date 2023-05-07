@@ -14,18 +14,18 @@ const toggle = () => {
 </script>
 
 <template>
-    <div class="flex flex-row flex-nowrap basis-1/2 w-1/2 items-center">
+    <div class="flex flex-row flex-nowrap w-1/2 items-center">
         <div class="relative w-full h-full">
             <button
-                @click="toggle"
                 type="button"
                 class="relative w-full h-8 cursor-default rounded-[5px] border border-red-900 bg-white pl-2 pr-5 text-left shadow-sm focus:outline-none focus:ring-1 focus:ring-lime-500"
+                @click="toggle"
             >
                 <span class="flex flex-nowrap items-center w-full">
                     <span
                         aria-label="Active"
                         class="h-1 w-1 rounded-full bg-green-400"
-                    ></span>
+                    />
                     <span
                         class="capitalize text-xs ml-1 truncate text-ellipsis font-bungee font-bold text-gray-600"
                     >
@@ -50,12 +50,12 @@ const toggle = () => {
             >
                 <li
                     v-for="region in pokedexStore.formatted_regions"
+                    :key="region.name"
+                    class="text-gray-900 cursor-default select-none py-1 px-2"
                     @click="
                         pokedexStore.set_region(region);
                         visible = false;
                     "
-                    :key="region.name"
-                    class="text-gray-900 cursor-default select-none py-1 px-2"
                 >
                     <span class="font-normal block truncate text-xs capitalize">
                         {{ region.name }}

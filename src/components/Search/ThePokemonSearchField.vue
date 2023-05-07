@@ -27,8 +27,7 @@ function search_pokemon(query) {
 // pokedexStore.set_pokemon(pokedexStore.searchable_pokemon[25]);
 </script>
 <template>
-    <div class="basis-6/12 w-6/12 flex flex-nowrap items-center" />
-    <div class="basis-6/12 w-6/12 relative font-poppins">
+    <div class="w-6/12 relative font-poppins">
         <!-- Manually binding input values so mobile autocomplete works properly -->
         <input
             id="combobox"
