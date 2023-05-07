@@ -7,7 +7,7 @@ import TheLockScreen from "@/components/LockScreen/TheLockScreen.vue";
 import { ref } from "vue";
 
 let locked = ref(true);
-let lock_enabled = ref(true);
+let lock_enabled = ref(false);
 
 </script>
 
