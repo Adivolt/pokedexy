@@ -2,19 +2,45 @@ import { defineStore } from "pinia";
 
 export const useRegionPokemonStore = defineStore("regionPokemon", {
     state: () => ({
-        pokemon: null
+        pokemon: null,
+        loaded: false,
+        filter: null
     }),
 
     actions: {
         // Fetch the Pokémon available in this region
         async fill(region) {
-            console.log(region);
             return await fetch(region.url)
                 .then((response) => response.json())
                 .then((data) => data.pokemon_entries)
                 .then((entries) => {
                     this.pokemon = generate_species_id(entries);
+                })
+                .finally(() => {
+                    this.loaded = true;
                 });
+        }
+    },
+
+    getters: {
+        filteredPokemon: (state) => {
+            if (state.filter !== "") {
+                let query_substring = state.filter.toLowerCase().split(" ");
+                let suggestions = state.pokemon.filter(
+                    (pokemon) => {
+                        return query_substring.every((substring) => {
+                            return pokemon.name.includes(substring);
+                        });
+                    }
+                );
+                // if we have at least one suggestion, return the first 6
+                if (suggestions.length >= 1) {
+                    return suggestions.slice(0, 6);
+                }
+            } else {
+                // if the query is empty, return null
+                return null;
+            }
         }
     }
 });

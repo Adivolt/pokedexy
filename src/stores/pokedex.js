@@ -8,7 +8,8 @@ export const usePokedexStore = defineStore("pokedex", {
 
     state: () => ({
         regions: null,
-        active_region: null
+        active_region: null,
+        loaded: false
     }),
 
     actions: {
@@ -19,7 +20,10 @@ export const usePokedexStore = defineStore("pokedex", {
                 .then((regions) => {
                     this.regions = format_region_data(regions);
                 })
-                .finally(() => this.set_region(this.regions[KANTO_POKEDEX]))
+                .finally(() => {
+                    this.set_region(this.regions[KANTO_POKEDEX]);
+                    this.loaded = true;
+                })
             ;
         },
 
