@@ -10,11 +10,16 @@ const loading = ref(true);
 // Generate a loading delay of 1 to 3 seconds using the composable
 const loading_delay = useRandomSecondsInRange(1, 3);
 
+const body = document.querySelector("body");
+
 const emit = defineEmits(["unlocked"]);
 
 onMounted(() => {
     // When the delay expires set the loading to false
     setTimeout(() => loading.value = false, loading_delay);
+
+    // Set the body elements overflow to hidden
+    body.style.overflow = "hidden";
 });
 
 function animate_opening() {
@@ -34,6 +39,8 @@ function animate_opening() {
             easing: "easeOutQuad",
             complete: () => {
                 emit("unlocked");
+                // Set the body elements overflow to hidden
+                body.style.overflow = "auto";
             }
         });
     }
