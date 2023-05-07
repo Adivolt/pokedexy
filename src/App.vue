@@ -2,11 +2,17 @@
 import { RouterView } from "vue-router";
 import TheTopBar from "@/components/TopBar/TheTopBar.vue";
 import TheLockScreen from "@/components/LockScreen/TheLockScreen.vue";
+import { usePokedexStore } from "@/stores/pokedex";
 
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 
+const pokedexStore = usePokedexStore();
 let locked = ref(true);
-let lock_enabled = ref(false);
+let lock_enabled = ref(true);
+
+onMounted(() => {
+    pokedexStore.init();
+});
 
 </script>
 

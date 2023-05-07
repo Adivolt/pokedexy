@@ -3,8 +3,7 @@ import { usePokedexStore } from "@/stores/pokedex";
 import ChevronDown from "@/components/icons/ChevronDown.vue";
 import { ref } from "vue";
 
-const pokedexStore = usePokedexStore();
-pokedexStore.fill();
+const pokedex = usePokedexStore();
 
 const visible = ref(false);
 
@@ -27,9 +26,10 @@ const toggle = () => {
                         class="h-1 w-1 rounded-full bg-green-400"
                     />
                     <span
+                        v-if="pokedex.active_region"
                         class="capitalize text-xs ml-1 truncate text-ellipsis font-bungee font-bold text-gray-600"
                     >
-                        {{ pokedexStore.selected_region.name }}
+                        {{ pokedex.active_region.name }}
                     </span>
                 </span>
                 <span
@@ -49,11 +49,11 @@ const toggle = () => {
                 aria-activedescendant="pokedexes"
             >
                 <li
-                    v-for="region in pokedexStore.formatted_regions"
+                    v-for="region in pokedex.regions"
                     :key="region.name"
                     class="text-gray-900 cursor-default select-none py-1 px-2"
                     @click="
-                        pokedexStore.set_region(region);
+                        pokedex.set_region(region);
                         visible = false;
                     "
                 >
