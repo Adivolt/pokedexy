@@ -3,6 +3,7 @@ import { usePokedexStore } from "@/stores/pokedex";
 import VLazyImage from "v-lazy-image";
 import ThePokemonSearchField from "@/components/Search/ThePokemonSearchField.vue";
 import TheRegionSelector from "@/components/Search/TheRegionSelector.vue";
+import CircleSpinner from "@/components/icons/CircleSpinner.vue";
 
 const pokedexStore = usePokedexStore();
 </script>
@@ -27,6 +28,7 @@ const pokedexStore = usePokedexStore();
                 <a :href="`/${pokemon.species_id}/basic/`">
                     <v-lazy-image
                         :src=" pokemon?.species_id ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.species_id}.png` : './img/pokeball-grayscale.png'"
+                        src-placeholder="/img/loading-spinner.gif"
                         class="w-full h-auto p-2"
                     />
                     <p class="text-center font-bungee text-xs p-1 text-slate-600">
