@@ -1,6 +1,6 @@
 <script setup>
 import { usePokedexStore } from "@/stores/pokedex";
-import ChevronDown from "@/components/icons/ChevronDown.vue";
+import ChevronDown from "@/components/Icons/ChevronDown.vue";
 import { ref } from "vue";
 
 const pokedex = usePokedexStore();

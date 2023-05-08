@@ -2,8 +2,8 @@
 import { onMounted, ref, watch } from "vue";
 import { SparklesIcon } from "@heroicons/vue/24/solid";
 import TheVersionSelector from "@/components/ImageNavigator/TheVersionSelector.vue";
-import FemaleIcon from "@/components/icons/FemaleIcon.vue";
-import MaleIcon from "@/components/icons/MaleIcon.vue";
+import FemaleIcon from "@/components/Icons/FemaleIcon.vue";
+import MaleIcon from "@/components/Icons/MaleIcon.vue";
 
 const props = defineProps(["sprites"]);
 const organizedSprites = ref(null);
@@ -33,57 +33,57 @@ function sortSprites() {
             front_default: props.sprites.front_default,
             front_female: props.sprites.front_female,
             front_shiny: props.sprites.front_shiny,
-            front_shiny_female: props.sprites.front_shiny_female,
+            front_shiny_female: props.sprites.front_shiny_female
         },
         dream_world: { ...props.sprites.other.dream_world },
         home: { ...props.sprites.other.home },
         g1_red_blue: {
-            ...props.sprites.versions["generation-i"]["red-blue"],
+            ...props.sprites.versions["generation-i"]["red-blue"]
         },
         g1_yellow: {
-            ...props.sprites.versions["generation-i"]["yellow"],
+            ...props.sprites.versions["generation-i"]["yellow"]
         },
         g2_gold: {
-            ...props.sprites.versions["generation-ii"]["gold"],
+            ...props.sprites.versions["generation-ii"]["gold"]
         },
         g2_silver: {
-            ...props.sprites.versions["generation-ii"]["silver"],
+            ...props.sprites.versions["generation-ii"]["silver"]
         },
         g2_crystal: {
-            ...props.sprites.versions["generation-ii"]["crystal"],
+            ...props.sprites.versions["generation-ii"]["crystal"]
         },
         g3_ruby_sapphire: {
-            ...props.sprites.versions["generation-iii"]["ruby-sapphire"],
+            ...props.sprites.versions["generation-iii"]["ruby-sapphire"]
         },
         g3_emerald: {
-            ...props.sprites.versions["generation-iii"]["emerald"],
+            ...props.sprites.versions["generation-iii"]["emerald"]
         },
         g3_firered_leafgreen: {
-            ...props.sprites.versions["generation-iii"]["firered-leafgreen"],
+            ...props.sprites.versions["generation-iii"]["firered-leafgreen"]
         },
         g4_diamond_pearl: {
-            ...props.sprites.versions["generation-iv"]["diamond-pearl"],
+            ...props.sprites.versions["generation-iv"]["diamond-pearl"]
         },
         g4_heart_gold_soul_silver: {
-            ...props.sprites.versions["generation-iv"]["heartgold-soulsilver"],
+            ...props.sprites.versions["generation-iv"]["heartgold-soulsilver"]
         },
         g4_platinum: {
-            ...props.sprites.versions["generation-iv"]["platinum"],
+            ...props.sprites.versions["generation-iv"]["platinum"]
         },
         // TODO implement static sprites for this generation
         g5_black_white: {
             ...props.sprites.versions["generation-v"]["black-white"][
                 "animated"
-            ],
+                ]
         },
         g6_omega_ruby_alpha_saphire: {
             ...props.sprites.versions["generation-vi"][
                 "omegaruby-alphasapphire"
-            ],
+                ]
         },
         g6_x_y: {
-            ...props.sprites.versions["generation-vi"]["x-y"],
-        },
+            ...props.sprites.versions["generation-vi"]["x-y"]
+        }
     };
 }
 
@@ -96,21 +96,24 @@ function sortSprites() {
             class="rounded shadow w-full"
             :src="selectedImage"
             alt="front-sprite"
-        />
+        >
     </div>
 
     <div class="mt-1 flex w-full overflow-y-scroll snap-x gap-1">
-        <template v-for="(sprite, key) in selectedVersion" :key="sprite">
+        <template
+            v-for="(sprite, key) in selectedVersion"
+            :key="sprite"
+        >
             <div
                 v-if="sprite"
-                @click="selectedImage = sprite"
                 class="snap-start flex-shrink-0 flex-grow-0 w-1/4 flex-shrink-0 relative border border-slate-200 rounded"
+                @click="selectedImage = sprite"
             >
                 <img
                     class="shadow w-full h-full"
                     :src="sprite"
                     alt="front-sprite"
-                />
+                >
                 <div
                     class="absolute top-0 right-0 inline-flex flex-row bg-slate-100 rounded p-0.5 gap-1"
                 >
