@@ -3,7 +3,7 @@ import { RouterView } from "vue-router";
 import TheTopBar from "@/components/TopBar/TheTopBar.vue";
 import TheLockScreen from "@/components/LockScreen/TheLockScreen.vue";
 import { usePokedexStore } from "@/stores/pokedex";
-import { useRouter, useRoute } from "vue-router";
+import { useRoute } from "vue-router";
 
 import { computed, onMounted, ref } from "vue";
 
@@ -20,7 +20,6 @@ const showLock = computed(() => {
     const alreadyUnlocked = sessionStorage.getItem("locked") === "false";
     return locked.value && isHome && !alreadyUnlocked;
 });
-
 </script>
 
 <template>
