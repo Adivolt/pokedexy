@@ -1,12 +1,3 @@
-<script setup>
-defineProps({
-    "loading": {
-        type: Boolean,
-        default: true
-    }
-});
-</script>
-
 <template>
     <div
         id="bottom-slide"
