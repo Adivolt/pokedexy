@@ -24,6 +24,7 @@ onMounted(() => {
 function unlock() {
     
     locked.value = false;
+    sessionStorage.setItem("locked", "false");
     
     if (!loading.value) {
         gsap.to("#top-slide", {

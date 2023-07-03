@@ -3,15 +3,22 @@ import { RouterView } from "vue-router";
 import TheTopBar from "@/components/TopBar/TheTopBar.vue";
 import TheLockScreen from "@/components/LockScreen/TheLockScreen.vue";
 import { usePokedexStore } from "@/stores/pokedex";
+import { useRouter, useRoute } from "vue-router";
 
-import { onMounted, ref } from "vue";
+import { computed, onMounted, ref } from "vue";
 
 const pokedexStore = usePokedexStore();
 let locked = ref(true);
-let lock_enabled = ref(true);
+const route = useRoute();
 
 onMounted(() => {
     pokedexStore.init();
+});
+
+const showLock = computed(() => {
+    const isHome = route.name === "home";
+    const alreadyUnlocked = sessionStorage.getItem("locked") === "false";
+    return locked.value && isHome && !alreadyUnlocked;
 });
 
 </script>
@@ -21,7 +28,7 @@ onMounted(() => {
         <TheTopBar />
         <RouterView class="bg-white min-h-[75vh]" />
         <TheLockScreen
-            v-if="lock_enabled && locked"
+            v-if="showLock"
             @unlocked="locked = false"
         />
     </main>
