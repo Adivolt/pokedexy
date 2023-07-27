@@ -29,7 +29,7 @@
             class="col-start-2 row-start-3 justify-self-center self-end"
         >
             <p class="text-[.6em] font-bungee mb-3">
-                SYSTEM: V 1.0.0
+                SYSTEM: V 1.0.1
             </p>
         </div>
     </div>
