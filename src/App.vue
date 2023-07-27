@@ -1,9 +1,8 @@
 <script setup>
-import { RouterView } from "vue-router";
+import { RouterView, useRoute } from "vue-router";
 import TheTopBar from "@/components/TopBar/TheTopBar.vue";
 import TheLockScreen from "@/components/LockScreen/TheLockScreen.vue";
 import { usePokedexStore } from "@/stores/pokedex";
-import { useRoute } from "vue-router";
 
 import { computed, onMounted, ref } from "vue";
 
