@@ -10,19 +10,22 @@ const organizedSprites = ref(null);
 const selectedVersion = ref(null);
 const selectedImage = ref(null);
 
-onMounted(() => {
+onMounted(() =>
+{
     organizedSprites.value = sortSprites();
     selectedVersion.value = organizedSprites.value.official_artwork;
     selectedImage.value = selectedVersion.value.front_default;
 });
 
-watch(props, () => {
+watch(props, () =>
+{
     organizedSprites.value = sortSprites();
     selectedVersion.value = organizedSprites.value.official_artwork;
     selectedImage.value = selectedVersion.value.front_default;
 });
 
-function sortSprites() {
+function sortSprites()
+{
     return {
         official_artwork: { ...props.sprites.other["official-artwork"] },
         base: {
@@ -73,13 +76,13 @@ function sortSprites() {
         // TODO implement static sprites for this generation
         g5_black_white: {
             ...props.sprites.versions["generation-v"]["black-white"][
-                "animated"
-                ]
+            "animated"
+            ]
         },
         g6_omega_ruby_alpha_saphire: {
             ...props.sprites.versions["generation-vi"][
-                "omegaruby-alphasapphire"
-                ]
+            "omegaruby-alphasapphire"
+            ]
         },
         g6_x_y: {
             ...props.sprites.versions["generation-vi"]["x-y"]
@@ -91,56 +94,34 @@ function sortSprites() {
 </script>
 
 <template>
-    <div class="flex w-full h-auto">
-        <img
-            class="rounded shadow w-full"
-            :src="selectedImage"
-            alt="front-sprite"
-        >
-    </div>
-
-    <div class="mt-1 flex w-full overflow-y-scroll snap-x gap-1">
-        <template
-            v-for="(sprite, key) in selectedVersion"
-            :key="sprite"
-        >
-            <div
-                v-if="sprite"
-                class="snap-start flex-shrink-0 flex-grow-0 w-1/4 flex-shrink-0 relative border border-slate-200 rounded"
-                @click="selectedImage = sprite"
-            >
-                <img
-                    class="shadow w-full h-full"
-                    :src="sprite"
-                    alt="front-sprite"
-                >
-                <div
-                    class="absolute top-0 right-0 inline-flex flex-row bg-slate-100 rounded p-0.5 gap-1"
-                >
-                    <FemaleIcon
-                        v-if="key.includes('female')"
-                        class="text-pink-500 w-3 h-3"
-                    />
-                    <MaleIcon
-                        v-if="!key.includes('female')"
-                        class="text-blue-600 w-3 h-3"
-                    />
-                    <SparklesIcon
-                        v-if="key.includes('shiny')"
-                        class="text-yellow-600 w-3 h-3"
-                    />
-                </div>
+    <div class="md:flex">
+        <div class="md:min-w-[450px] md:max-w-[450px] md:mx-auto">
+            <div class="w-full ">
+                <img class="rounded shadow w-full max-h-[450px]" :src="selectedImage" alt="front-sprite">
             </div>
-        </template>
-    </div>
 
-    <TheVersionSelector
-        :versions="organizedSprites"
-        @version-selected="
-            (e) => {
+            <div class="mt-1 flex w-full overflow-y-scroll snap-x gap-1">
+                <template v-for="(sprite, key) in selectedVersion" :key="sprite">
+                    <div v-if="sprite"
+                        class="snap-start flex-shrink-0 flex-grow-0 w-1/4 flex-shrink-0 relative border border-slate-200 rounded"
+                        @click="selectedImage = sprite">
+                        <img class="shadow w-full h-full max-h-[110px]" :src="sprite" alt="front-sprite">
+                        <div class="absolute top-0 right-0 inline-flex flex-row bg-slate-100 rounded p-0.5 gap-1">
+                            <FemaleIcon v-if="key.includes('female')" class="text-pink-500 w-3 h-3" />
+                            <MaleIcon v-if="!key.includes('female')" class="text-blue-600 w-3 h-3" />
+                            <SparklesIcon v-if="key.includes('shiny')" class="text-yellow-600 w-3 h-3" />
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+
+        <div>
+            <TheVersionSelector :versions="organizedSprites" @version-selected="(e) => {
                 selectedVersion = e;
                 selectedImage = e.front_default;
             }
-        "
-    />
+                " />
+        </div>
+    </div>
 </template>
