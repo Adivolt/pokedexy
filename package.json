@@ -22,7 +22,7 @@
     },
     "devDependencies": {
         "@vitejs/plugin-vue": "^4.0.0",
-        "autoprefixer": "^10.4.13",
+        "autoprefixer": "^10.4.15",
         "eslint": "^8.39.0",
         "eslint-plugin-vue": "^9.11.0",
         "postcss": "^8.4.21",
