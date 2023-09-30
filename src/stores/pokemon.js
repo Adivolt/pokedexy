@@ -54,40 +54,39 @@ import { defineStore } from "pinia";
 
 export const usePokemonStore = defineStore("pokemon", {
     state: () => ({
-        pokemon: null
+        pokemon: null,
+        loading: true
     }),
 
     actions: {
         /**
-         * Set the Pokémon to display data for
+         * Generate the data for the selected pokemon
          * @param {number|string} pokemonID
          * @returns {Promise<void> | PokemonData}
          */
         async selectPokemon(pokemonID) {
 
+            this.loading = true;
             // if the pokemonID is a string, we need to convert it to a number
             if (typeof pokemonID === "string") {
                 pokemonID = parseInt(pokemonID);
             }
 
-            let [pokemon_info, pokemon_species_info] = await Promise.all([
-                fetch(
-                    `https://pokeapi.co/api/v2/pokemon/${pokemonID}/`
-                )
+            let [pokemonData, pokemonSpeciesData] = await Promise.all([
+                fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonID}/`)
                     .then((response) => response.json())
                     .then((data) => data),
-                fetch(
-                    `https://pokeapi.co/api/v2/pokemon-species/${pokemonID}/`
-                )
+                fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemonID}/`)
                     .then((response) => response.json())
                     .then((data) => data)
             ]);
 
             // Merge the data from the 2 api calls and create a new object based on aggregated data
             this.pokemon = {
-                ...pokemon_info,
-                ...pokemon_species_info
+                ...pokemonData,
+                ...pokemonSpeciesData
             };
+            this.loading = false;
         }
     }
 });
