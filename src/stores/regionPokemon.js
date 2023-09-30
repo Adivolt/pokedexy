@@ -46,7 +46,7 @@ export const useRegionPokemonStore = defineStore("regionPokemon", {
         async fill(region) {
             this.loading = true;
             let pokemonEntries = await this.fetchPokemonEntries(region);
-            this.pokemon = this.preparePokemonData(pokemonEntries);
+            this.pokemon = this.prepareRegionPokemonData(pokemonEntries);
             this.loading = false;
         },
         /**
@@ -70,7 +70,7 @@ export const useRegionPokemonStore = defineStore("regionPokemon", {
          * @param {pokemonEntries} entries - Pokémon entries for this region
          * @returns {Pokemon[]} - Formatted Pokémon data
          */
-        preparePokemonData(entries) {
+        prepareRegionPokemonData(entries) {
             return entries.map((pokemon) => {
                 // Remove the trailing slash from the url
                 let cleanedUrl = pokemon.pokemon_species.url.slice(0, -1);

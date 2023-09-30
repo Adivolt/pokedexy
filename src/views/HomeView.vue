@@ -38,7 +38,7 @@ const pokedex = usePokedexStore();
                     :key="pokemon.speciesID"
                     class="border-[1px] rounded-md border-slate-600"
                 >
-                    <a :href="`/${pokemon.speciesID}/basic/`">
+                    <router-link :to="{name: 'basic', params: { id: pokemon.speciesID} }">
                         <v-lazy-image
                             :src="pokemon?.speciesID ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.speciesID}.png` : './img/pokeball-grayscale.png'"
                             src-placeholder="/img/loading-spinner.gif"
@@ -47,7 +47,7 @@ const pokedex = usePokedexStore();
                         <p class="text-center font-bungee text-xs p-1 text-slate-600">
                             {{ pokemon.name }}
                         </p>
-                    </a>
+                    </router-link>
                 </div>
             </div>
         </div>
@@ -62,7 +62,7 @@ const pokedex = usePokedexStore();
                     :key="pokemon.speciesID"
                     class="border-[1px] rounded-md border-slate-600"
                 >
-                    <a :href="`/${pokemon.speciesID}/basic/`">
+                    <router-link :to="{name: 'basic', params: { id: pokemon.speciesID} }">
                         <v-lazy-image
                             :src="pokemon.imageUrl"
                             src-placeholder="/img/loading-spinner.gif"
@@ -71,7 +71,7 @@ const pokedex = usePokedexStore();
                         <p class="text-center font-bungee text-xs p-1 text-slate-600">
                             {{ pokemon.name }}
                         </p>
-                    </a>
+                    </router-link>
                 </div>
             </div>
             <div
