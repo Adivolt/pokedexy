@@ -6,11 +6,11 @@ import ThePokemonSearchField from "@/components/Search/ThePokemonSearchField.vue
 import TheRegionSelector from "@/components/Search/TheRegionSelector.vue";
 import CircleSpinner from "@/components/Icons/CircleSpinner.vue";
 
+
 /**
- * Need to explain the purpose of X here.
- * @type {Pokemon[]}
+ * @type {useRegionPokemonStore} regionPokemon
  */
-const region_pokemon = useRegionPokemonStore();
+const regionPokemon = useRegionPokemonStore();
 const pokedex = usePokedexStore();
 
 </script>
@@ -24,23 +24,23 @@ const pokedex = usePokedexStore();
         
         <!--Display information about current region and pokemon count -->
         <p
-            v-if="!pokedex.loading && !region_pokemon.loading"
+            v-if="!pokedex.loading && !regionPokemon.loading"
             class="font-bungee text-sm py-1 px-2 text-slate-500"
         >
-            {{ region_pokemon.pokemon.length }} Pokémon in {{ pokedex.active_region.name }}
+            {{ regionPokemon.pokemon.length }} Pokémon in {{ pokedex.active_region.name }}
         </p>
         
         
-        <div v-show="region_pokemon.filtered_pokemon">
+        <div v-show="regionPokemon.filtered_pokemon">
             <div class="grid grid-cols-3 lg:grid-cols-8 gap-2 py-1 px-2">
                 <div
-                    v-for="pokemon in region_pokemon.filtered_pokemon"
-                    :key="pokemon.species_id"
+                    v-for="pokemon in regionPokemon.filtered_pokemon"
+                    :key="pokemon.speciesID"
                     class="border-[1px] rounded-md border-slate-600"
                 >
-                    <a :href="`/${pokemon.species_id}/basic/`">
+                    <a :href="`/${pokemon.speciesID}/basic/`">
                         <v-lazy-image
-                            :src="pokemon?.species_id ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.species_id}.png` : './img/pokeball-grayscale.png'"
+                            :src="pokemon?.speciesID ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.speciesID}.png` : './img/pokeball-grayscale.png'"
                             src-placeholder="/img/loading-spinner.gif"
                             class="w-full h-auto p-2"
                         />
@@ -52,19 +52,19 @@ const pokedex = usePokedexStore();
             </div>
         </div>
         
-        <div v-show="!region_pokemon.filtered_pokemon">
+        <div v-show="!regionPokemon.filtered_pokemon">
             <div
-                v-if="!region_pokemon.loading"
+                v-if="!regionPokemon.loading"
                 class="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-8 gap-2 py-1 px-2"
             >
                 <div
-                    v-for="pokemon in region_pokemon.pokemon"
-                    :key="pokemon.species_id"
+                    v-for="pokemon in regionPokemon.pokemon"
+                    :key="pokemon.speciesID"
                     class="border-[1px] rounded-md border-slate-600"
                 >
-                    <a :href="`/${pokemon.species_id}/basic/`">
+                    <a :href="`/${pokemon.speciesID}/basic/`">
                         <v-lazy-image
-                            :src="pokemon.image_url"
+                            :src="pokemon.imageUrl"
                             src-placeholder="/img/loading-spinner.gif"
                             class="w-full h-auto p-2"
                         />
