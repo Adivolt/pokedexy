@@ -2,17 +2,15 @@
 import { MagnifyingGlassCircleIcon } from "@heroicons/vue/24/outline";
 import { useRegionPokemonStore } from "@/stores/regionPokemon";
 import { onMounted, ref } from "vue";
-import { MutationType } from "pinia";
 
 
 const region_pokemon = useRegionPokemonStore();
 const query = ref(null);
 
-region_pokemon.$subscribe((mutation, state) => {
-    if (mutation.type === MutationType.direct && mutation.storeId === "search_query") {
-        query.value = state;
-    }
+onMounted(() => {
+    query.value = region_pokemon.search_query;
 });
+
 
 function searchPokemon() {
     if (query.value === "") {
