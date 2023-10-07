@@ -24,10 +24,11 @@ export const usePokedexStore = defineStore("pokedex", {
         },
 
         async setRegion(region) {
-            this.active_region = region;
-            // When a region is selected, we want to fill the region Pokémon store with Pokémon from the selected region
-            await useRegionPokemonStore().fill(region);
             // clear the search query
+            useRegionPokemonStore().search_query = null;
+            // When a region is selected, we want to fill the region Pokémon store with Pokémon from the selected region
+            this.active_region = region;
+            await useRegionPokemonStore().fill(this.active_region);
         },
 
         formatRegionData(regions) {
