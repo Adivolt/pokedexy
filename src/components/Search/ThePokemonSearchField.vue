@@ -14,9 +14,9 @@ onMounted(() => {
 
 
 // Whenever a state change is detected on the store, update the local query
-region_pokemon.$subscribe((mutation) => {
+region_pokemon.$subscribe((mutation, state) => {
     if (mutation.type === MutationType.direct) {
-        query.value = region_pokemon.search_query;
+        query.value = state.search_query;
     }
 });
 

@@ -6,6 +6,7 @@ import { useRoute } from "vue-router";
 import { onMounted } from "vue";
 import { ArrowLeftIcon } from "@heroicons/vue/20/solid";
 import TheSpriteViewer from "@/components/ImageNavigator/TheSpriteViewer.vue";
+import TheFlavorTextViewer from "@/components/Pokemon/TheFlavorTextViewer.vue";
 
 const pokemonStore = usePokemonStore();
 const route = useRoute();
@@ -27,17 +28,12 @@ onMounted(() => {
             class="p-2"
         >
             <TheSpriteViewer :sprites="pokemonStore.pokemon.sprites" />
-            <p class="mt-3 font-bold md:text-center">
-                {{ pokemonStore?.pokemon?.flavor_text_entries[1].flavor_text }}
-            </p>
-            <!-- TODO: Implement loading state and to prevent rendering warnings, then simplify conditional -->
+            <TheFlavorTextViewer :flavor-text-entries="pokemonStore.pokemon.flavor_text_entries" />
         </div>
         <div v-else>
             <p>Loading...</p>
         </div>
         
-        <!-- TODO: this is commented out because not enough time to finish have to start applying for jobs -->
-        <!-- <p>{{ route.params.id }}</p> -->
-        <!-- <TheNavBar /> -->
+        <TheNavBar />
     </section>
 </template>
