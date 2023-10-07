@@ -4,7 +4,6 @@ import ChevronDown from "@/components/Icons/ChevronDown.vue";
 import { ref } from "vue";
 
 const pokedex = usePokedexStore();
-
 const visible = ref(false);
 
 const toggle = () => {
@@ -38,8 +37,8 @@ const toggle = () => {
                     <ChevronDown />
                 </span>
             </button>
-
-            <!--      if the state is open then show the dropdown-->
+            
+            <!-- if the state is open then show the dropdown -->
             <ul
                 v-if="visible"
                 class="absolute inset-x-0 z-10 w-full overflow-auto rounded-md bg-white text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none font-bungee"
@@ -53,7 +52,7 @@ const toggle = () => {
                     :key="region.name"
                     class="text-gray-900 cursor-default select-none py-1 px-2"
                     @click="
-                        pokedex.set_region(region);
+                        pokedex.setRegion(region);
                         visible = false;
                     "
                 >

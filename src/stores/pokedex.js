@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import { useRegionPokemonStore } from "@/stores/regionPokemon";
 
-// index 0 is national dex
+
 const KANTO_POKEDEX = 1;
 
 export const usePokedexStore = defineStore("pokedex", {
@@ -15,37 +15,28 @@ export const usePokedexStore = defineStore("pokedex", {
     actions: {
         async init() {
             this.loading = true;
-            await fetch("https://pokeapi.co/api/v2/pokedex/?limit=20")
+            let regions = await fetch("https://pokeapi.co/api/v2/pokedex/?limit=20")
                 .then((response) => response.json())
-                .then((data) => data.results)
-                .then((regions) => {
-                    this.regions = format_region_data(regions);
-                    this.set_region(this.regions[KANTO_POKEDEX]);
-                })
-                .finally(() => {
-                    this.loading = false;
-                })
-            ;
+                .then((data) => data.results);
+            this.regions = this.formatRegionData(regions);
+            await this.setRegion(this.regions[KANTO_POKEDEX]);
+            this.loading = false;
         },
 
-        async set_region(region) {
+        async setRegion(region) {
+            // clear the search query
+            useRegionPokemonStore().search_query = null;
+            // When a region is selected, we want to fill the region Pokémon store with Pokémon from the selected region
             this.active_region = region;
-            // When a region is selected, we want to fetch the Pokémon available in that region
-            // Fill the region Pokémon store with Pokémon from the region
-            await useRegionPokemonStore().fill(region);
-            // Set the search status to false
-            useRegionPokemonStore().searching = false;
-            // Set the filtered Pokémon to null
-            useRegionPokemonStore().filtered_pokemon = null;
+            await useRegionPokemonStore().fill(this.active_region);
+        },
+
+        formatRegionData(regions) {
+            return regions.map((region) => ({
+                name: region.name.replace("-", " "),
+                url: region.url
+            }));
         }
     }
 
 });
-
-function format_region_data(regions) {
-    return regions.map((region) => ({
-        name: region.name.replace("-", " "),
-        url: region.url
-    }));
-}
-
