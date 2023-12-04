@@ -4,8 +4,9 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                bungee: ["Bungee", ...defaultTheme.fontFamily.sans],
-                poppins: ["Poppins", ...defaultTheme.fontFamily.sans]
+                bungee: ["Bungee",...defaultTheme.fontFamily.sans],
+                poppins: ["Poppins", ...defaultTheme.fontFamily.sans],
+                noto: ["Noto Sans JP", ...defaultTheme.fontFamily.sans]
             }
         },
         backgroundImage: {
