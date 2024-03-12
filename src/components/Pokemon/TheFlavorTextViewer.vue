@@ -21,7 +21,7 @@ const processedFlavorTextEntries = computed(() => {
     // Only perform the following cleanup for the English language.
     if (entry.language.name === "en") {
       cleanText = uncleanText
-          .replace(/[^a-zA-Z0-9\s]/g, "") // Remove all non-alphanumeric characters
+          .replace(/[^a-zA-Z0-9é\s]/g, "") // Remove all non-alphanumeric characters, keep accented é
           .replace(/[\n\r]+/g, " ") // Replace all newlines with spaces
           .replace(/<0xad>/g, "-")  // Replace <0xad> with "-"
           .replace(/\f/g, " ")  // Replace Form Feed (Ff) (U+000C) with an empty string
@@ -52,7 +52,7 @@ const flavorTextsForSelectedLanguage = computed(() => {
     <The-language-selector @language-selected="(selectedLanguage) => language = selectedLanguage" />
     <template
         v-for="(flavorText) in flavorTextsForSelectedLanguage"
-        :key="flavorText.language"
+        :key="flavorText.version"
     >
         <p class="mt-3 font-noto">
             ({{ flavorText.version }}) {{ flavorText.text }}
